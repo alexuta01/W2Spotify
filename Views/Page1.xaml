@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:W2Spotify.Models"
+             xmlns:icon="clr-namespace:W2Spotify.Utils"
+             x:Class="W2Spotify.Views.Page1"
+             Shell.NavBarIsVisible="False"
+    Title="">
+    <VerticalStackLayout BackgroundColor="Black" Padding="7,30">
+        <Grid RowDefinitions="*"
+              ColumnDefinitions="*,*,*,*">
+            <Label Grid.Row="0"
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   Text="Good afternoon"
+                   TextColor="White"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   FontFamily=""/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   FontFamily="Moon"
+                   Text="{x:Static icon:IconFont.Bell}"
+                   TextColor="White"
+                   SemanticProperties.HeadingLevel="Level1"
+                   FontSize="30"
+                   HorizontalOptions="Center"/>
+            <Label Grid.Row="0"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="2"
+                   FontFamily="Moon"
+                   Text="{x:Static icon:IconFont.Time}"
+                   TextColor="White"
+                   SemanticProperties.HeadingLevel="Level1"
+                   FontSize="30"
+                   HorizontalOptions="Center"/>
+            <Label Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="2"
+                FontFamily="Moon"
+                Text="{x:Static icon:IconFont.Settings}"
+                TextColor="White"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="30"
+                HorizontalOptions="Center"/>
+        </Grid>
+
+        <StackLayout Margin="5,18" Spacing="5" Orientation="Horizontal">
+            <Frame BackgroundColor="#2a2a2a" BorderColor="Black" Padding="15"
+                   HasShadow="True"
+                   CornerRadius="30"
+                   WidthRequest="80"
+                   HeightRequest="47">
+
+                <Label Grid.Row="0"
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="1"
+                       Text="Music"
+                       TextColor="White"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+            </Frame>
+            <Frame BackgroundColor="#2a2a2a" BorderColor="Black" Padding="15"
+                   HasShadow="True"
+                   CornerRadius="30"
+                   WidthRequest="180"
+                   HeightRequest="48">
+                <Label Grid.Row="0"
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="2"
+                            Text="Podcasts &amp; Shows"
+                            TextColor="White"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Margin="7,7" Spacing="10" Orientation="Horizontal">
+            <CollectionView>
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type model:Spotify}">
+                        <model:Spotify Name="Liked Songs"
+                                       Image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Time.JPG"/>
+                        <model:Spotify Name=" Discover Weekly"
+                                       Image="https://upload.wikimedia.org/wikipedia/commons/1/18/Water_drop_impact_on_a_water-surface_-_%285%29.jpg"/>
+                        <model:Spotify Name="Your Top Songs 2022"
+                                       Image="https://upload.wikimedia.org/wikipedia/commons/5/5b/DancingFlames.jpg"/>
+                        <model:Spotify Name="Daily Mix 1"
+                                       Image="https://upload.wikimedia.org/wikipedia/commons/7/74/Water_drop%2C_green.jpg"/>
+                        <model:Spotify Name="Zonga Music"
+                                       Image="https://images6.fanpop.com/image/photos/32900000/Zonga-rollercoasters-32919031-800-579.jpg"/>
+                        <model:Spotify Name="Zonga Music (2)"
+                                       Image="https://upload.wikimedia.org/wikipedia/commons/2/22/Francine_Jordi_Wien_13-9-2008b.jpg"/>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Grid.Column="0" Padding="1" BackgroundColor="#2a2a2a" BorderColor="Black"
+                               CornerRadius="10">
+                            <Grid ColumnDefinitions="auto, *"
+                                  RowDefinitions="*, *">
+                                <Image Grid.RowSpan="2"
+                                       Source="{Binding Image}" HeightRequest="60"
+                                       WidthRequest="60" Aspect="AspectFill"/>
+                                
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}" TextColor="White"
+                                       VerticalOptions="End"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"
+                                       FontFamily="" Margin="5"
+                                       HeightRequest="20" WidthRequest="110"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" 
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </StackLayout>
+
+        <Grid>
+            <StackLayout Margin="1,10" Spacing="5" Orientation="Horizontal">
+                <Frame BorderColor="Black"
+                   HasShadow="True"
+                   Margin="10"
+                   CornerRadius="50"
+                   WidthRequest="60"
+                   HeightRequest="60">
+                    <Image 
+                       Source="https://upload.wikimedia.org/wikipedia/commons/7/73/Jon_Bon_Jovi.jpg"
+                       Aspect="AspectFill"
+                       HeightRequest="60"
+                       WidthRequest="60"/>
+                </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="65"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label VerticalOptions="Center"
+                           Grid.Column="1"
+                           Text="MORE LIKE"
+                           TextColor="DarkGray"
+                           FontSize="14"
+                           HeightRequest="40"
+                           FontFamily=""/>
+                    <Label VerticalOptions="End"
+                           Grid.Column="1"
+                           Text="Bon Jovi"
+                           FontSize="25"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Start"
+                           HeightRequest="40"
+                           FontFamily=""/>
+                </Grid>
+
+            </StackLayout>
+        </Grid>
+
+
+
+
+    </VerticalStackLayout>
+
+</ContentPage>
